@@ -14,20 +14,22 @@ public:
 		return rankCount;
 	}
 
-	int shiftInt(int number, int shiftCount, bool direction = true) {
+	int shiftInt(int number, int shiftCount) {
 		int rankCount = numberRankCount(number);
 		int position = pow(10, rankCount - 1);
 
 
-		if (!direction) {
-			for (int i = 0; i < shiftCount; i++) {
+		if (shiftCount < 0) {
+			for (int i = 0; i < abs(shiftCount); i++) {
 				int tmp = number / position;
 				number %= position;
 				number = number * 10 + tmp;
 			}
 		}
 		else {
-			for (int i = 0; i < shiftCount; i++) {
+			for (int i = 0; 
+				i < abs(shiftCount); 
+				i++) {
 				int tmp = number % 10;
 				number /= 10;
 				number = tmp * position + number;

@@ -31,7 +31,6 @@ namespace lab1
             return newArray;
         }
 
-
         public static (int, int) MaxEven(int[] array)
         {
             int maxNumber = int.MinValue;

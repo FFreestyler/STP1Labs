@@ -12,7 +12,7 @@ namespace UnitTest1
 		Class1 modudeClass;
 		TEST_METHOD(TestShiftIntLeft)
 		{
-			auto actual = modudeClass.shiftInt(12345, 3);
+			auto actual = modudeClass.shiftInt(12345, -2);
 			auto expected = 34512;
 
 			Assert::AreEqual(expected, actual);

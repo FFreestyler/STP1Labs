@@ -4,11 +4,12 @@ Console.WriteLine("Hello, World!");
 
 try
 {
-    MatrixClass a = new MatrixClass(new int[,] { { 2, 2 }, { 2, 2 } }, 2, 2);
-    MatrixClass b = new MatrixClass(new int[,] { { 3, 3 }, { 3, 3 } }, 2, 2);
+    MatrixClass a = new MatrixClass(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }, 3, 3);
     MatrixClass c;
 
-    c = a * b;
+    a.Show();
+
+    c = a.Tranpose();
 
     c.Show();
 }

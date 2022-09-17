@@ -3,11 +3,11 @@ using lab5;
 
 try
 {
-    SimpleFractionClass f = new SimpleFractionClass(1, 5);
-    SimpleFractionClass f2 = new SimpleFractionClass(2, 5);
+    SimpleFractionClass f = new SimpleFractionClass(4, 16);
+    SimpleFractionClass f2 = new SimpleFractionClass(2, 16);
     SimpleFractionClass outn;
 
-    outn = f + f2;
+    outn = f - f2;
 
     outn.Show();
 

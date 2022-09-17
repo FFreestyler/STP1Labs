@@ -76,20 +76,20 @@ namespace lab5
         {
             var unionDenominator = lcm(a._denominator, b._denominator);
 
-            var relNum = a._nominator * unionDenominator / a._denominator;
-            var mulNum = b._nominator * unionDenominator / b._denominator;
+            var firstNumber = a._nominator * unionDenominator / a._denominator;
+            var secondNumber = b._nominator * unionDenominator / b._denominator;
 
-            return new(relNum + mulNum, unionDenominator);
+            return new(firstNumber + secondNumber, unionDenominator);
         }
 
         public static SimpleFractionClass operator -(SimpleFractionClass a, SimpleFractionClass b)
         {
             var unionDenominator = lcm(a._denominator, b._denominator);
 
-            var relNum = a._nominator * unionDenominator / a._denominator;
-            var mulNum = b._nominator * unionDenominator / b._denominator;
+            var firstNumber = a._nominator * unionDenominator / a._denominator;
+            var secondNumber = b._nominator * unionDenominator / b._denominator;
 
-            return new (relNum - mulNum, unionDenominator);
+            return new (firstNumber - secondNumber, unionDenominator);
         }
 
         public static SimpleFractionClass operator *(SimpleFractionClass a, SimpleFractionClass b)

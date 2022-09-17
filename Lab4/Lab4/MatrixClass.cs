@@ -22,11 +22,11 @@ namespace Lab4
         {
             if (i <= 0)
             {
-                throw new MyException($"недопустимое значение строки = { i }");
+                throw new MyException($"недопустимое значение строки = {i}");
             }
             if (j <= 0)
             {
-                throw new MyException($"недопустимое значение столбца = { j }");
+                throw new MyException($"недопустимое значение столбца = {j}");
             }
             Rows = i;
             Cols = j;
@@ -35,11 +35,11 @@ namespace Lab4
 
         public MatrixClass(int[,] matrix, int i, int j)
         {
-            if(i <= 0)
+            if (i <= 0)
             {
                 throw new MyException($"недопустимое значение строки = {i}");
             }
-            if(j <= 0)
+            if (j <= 0)
             {
                 throw new MyException($"недопустимое значение столбца = {j}");
             }
@@ -68,11 +68,11 @@ namespace Lab4
             {
                 if (i < 0 | i > Rows - 1)
                 {
-                    throw new MyException($"неверное значение i = { i }");
+                    throw new MyException($"неверное значение i = {i}");
                 }
                 if (j < 0 | j > Cols - 1)
                 {
-                    throw new MyException($"неверное значение j = { 0 }");
+                    throw new MyException($"неверное значение j = {0}");
                 }
                 _matrix[i, j] = value;
             }
@@ -86,13 +86,9 @@ namespace Lab4
             }
 
             MatrixClass c = new MatrixClass(a.Rows, a.Cols);
-            for (int i = 0;
-                i < a.Cols;
-                i++)
+            for (int i = 0; i < a.Cols; i++)
             {
-                for (int j = 0;
-                    j < a.Rows;
-                    j++)
+                for (int j = 0; j < a.Rows; j++)
                 {
                     c[i, j] = a._matrix[i, j] + b._matrix[i, j];
                 }
@@ -108,13 +104,9 @@ namespace Lab4
             }
 
             MatrixClass m = new(a.Rows, b.Cols);
-            for(int i = 0;
-                i < a.Cols;
-                i++)
+            for (int i = 0; i < a.Cols; i++)
             {
-                for(int j = 0;
-                    j < b.Rows;
-                    j++)
+                for (int j = 0; j < b.Rows; j++)
                 {
                     m[i, j] = a._matrix[i, j] - b._matrix[i, j];
                 }
@@ -130,18 +122,12 @@ namespace Lab4
             }
 
             MatrixClass m = new(a.Rows, b.Cols);
-            for (int i = 0;
-                i < a.Cols;
-                i++)
+            for (int i = 0; i < a.Cols; i++)
             {
-                for (int j = 0;
-                    j < b.Rows;
-                    j++)
+                for (int j = 0; j < b.Rows; j++)
                 {
                     m[i, j] = 0;
-                    for(int k = 0;
-                        k < b.Cols;
-                        k++)
+                    for (int k = 0; k < b.Cols; k++)
                     {
                         m[i, j] += a[i, k] * b[k, j];
                     }
@@ -158,17 +144,13 @@ namespace Lab4
             }
 
             bool q = true;
-            for (int i = 0;
-                i < a.Cols;
-                i++)
+            for (int i = 0; i < a.Cols; i++)
             {
-                for (int j = 0;
-                    j < a.Rows;
-                    j++)
+                for (int j = 0; j < a.Rows; j++)
                 {
                     if (a[i, j] != b[i, j])
                     {
-                        q = false; 
+                        q = false;
                         break;
                     }
                 }
@@ -188,14 +170,10 @@ namespace Lab4
                 throw new MyException($"матрица не квадратная");
             }
 
-            MatrixClass c = new(_matrix, Rows, Cols);
-            for (int i = 0;
-                i < Rows;
-                i++)
+            MatrixClass c = new(Rows, Cols);
+            for (int i = 0; i < Rows; i++)
             {
-                for (int j = 0;
-                    j < Cols;
-                    j++)
+                for (int j = 0; j < Cols; j++)
                 {
                     c[i, j] = _matrix[j, i];
                 }
@@ -207,15 +185,14 @@ namespace Lab4
         {
             int minElement = int.MaxValue;
 
-            for(int i = 0;
-                i < Rows;
-                i++)
+            for (int i = 0; i < Rows; i++)
             {
-                for(int j = 0;
-                    j < Cols;
-                    j++)
+                for (int j = 0; j < Cols; j++)
                 {
-                    minElement = _matrix[i, j];
+                    if (minElement > _matrix[i, j])
+                    {
+                        minElement = _matrix[i, j];
+                    }
                 }
             }
             return minElement;
@@ -223,13 +200,9 @@ namespace Lab4
 
         public void Show()
         {
-            for (int i = 0;
-                i < Rows;
-                i++)
+            for (int i = 0; i < Rows;i++)
             {
-                for (int j = 0;
-                    j < Cols; 
-                    j++)
+                for (int j = 0; j < Cols; j++)
                 {
                     Console.Write("\t" + this[i, j]);
                 }

@@ -116,9 +116,9 @@ namespace Lab4
 
         public static MatrixClass operator *(MatrixClass a, MatrixClass b)
         {
-            if (a.Rows != b.Cols)
+            if (a.Cols != b.Rows)
             {
-                throw new MyException($"матрица не квадратная");
+                throw new MyException($"матрицу нельзя умножить");
             }
 
             MatrixClass m = new(a.Rows, b.Cols);
@@ -163,7 +163,7 @@ namespace Lab4
             return !(a == b);
         }
 
-        public MatrixClass Tranpose()
+        public MatrixClass Transpose()
         {
             if (Rows != Cols)
             {

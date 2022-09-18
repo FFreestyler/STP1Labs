@@ -37,70 +37,56 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void Equel()
+        public void TestEqual()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 1; a[1, 0] = 1; a[1, 1] = 1;
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 1; b[0, 1] = 1; b[1, 0] = 1; b[1, 1] = 1;
+            MatrixClass actual = new MatrixClass(new int[,] { { 1, 1 }, { 1, 1 } }, 2, 2);
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 1 }, { 1, 1 } }, 2, 2);
 
-            Assert.AreEqual(a, b);
+            Assert.AreEqual(actual, expected);
         }
 
         [TestMethod]
-        public void TestEqualOperator1()
+        public void TestEqualOperator()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 1; a[1, 0] = 1; a[1, 1] = 1;
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 1; b[0, 1] = 1; b[1, 0] = 1; b[1, 1] = 2;
+            MatrixClass actual = new MatrixClass(new int[,] { { 1, 1}, { 1, 1 } }, 2, 2);
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 } }, 2, 2);
 
-            Assert.IsFalse(a == b);
+            Assert.IsFalse(actual == expected);
         }
 
         [TestMethod]
         [ExpectedException(typeof(MyException))]
-        public void TestEqualOperator2()
+        public void TestEqualOperatorSecond()
         {
-            MatrixClass a = new MatrixClass(1, 1);
-            a[0, 0] = 1; a[1, 0] = 1;
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 1; b[0, 1] = 1; b[1, 0] = 1; b[1, 1] = 2;
+            MatrixClass actual = new (new int[,] { { 1 }, { 1 } }, 1, 1);
+            MatrixClass expected = new (new int[,] { { 1, 2 }, { 1, 2 } }, 2, 2);
 
-            Assert.IsTrue(a != b);
+            Assert.IsTrue(actual != expected);
         }
 
         [TestMethod]
-        public void NotEquel()
+        public void TestNotEqual()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 1; a[1, 0] = 1; a[1, 1] = 1;
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 1; b[0, 1] = 1; b[1, 0] = 1; b[1, 1] = 2;
+            MatrixClass actual = new MatrixClass(new int[,] { { 1, 1 }, { 1, 1 } }, 2, 2);
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 2 }, { 1, 5 } }, 2, 2);
 
-            Assert.AreNotEqual(a, b);
+            Assert.AreNotEqual(actual, expected);
         }
 
         [TestMethod]
-        public void Summa1()
+        public void TestSum()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 1;
-            a[1, 0] = 1; a[1, 1] = 1;
+            MatrixClass a = new (new int[,] { { 1, 1 }, { 1, 1 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 2; b[0, 1] = 2;
-            b[1, 0] = 2; b[1, 1] = 2;
+            MatrixClass b = new (new int[,] { { 2, 2 }, { 2, 2 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 3; expected[0, 1] = 3;
-            expected[1, 0] = 3; expected[1, 1] = 3;
+            MatrixClass expected = new (new int[,] { { 3, 3 }, { 3, 3 } }, 2, 2);
 
-            MatrixClass actual = new MatrixClass(2, 2);
+            MatrixClass actual = new (2, 2);
 
             actual = a + b;
 
@@ -108,20 +94,14 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void Summa2()
+        public void TestSumSecond()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = -1; a[0, 1] = -1;
-            a[1, 0] = -1; a[1, 1] = -1;
+            MatrixClass a = new MatrixClass(new int[,] { { -1, -1 }, { -1, -1 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 2; b[0, 1] = 2;
-            b[1, 0] = 2; b[1, 1] = 2;
+            MatrixClass b = new MatrixClass(new int[,] { { 2, 2 }, { 2, 2 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 1; expected[0, 1] = 1;
-            expected[1, 0] = 1; expected[1, 1] = 1;
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 1}, { 1, 1 } }, 2, 2);
 
             MatrixClass actual = new MatrixClass(2, 2);
 
@@ -132,43 +112,30 @@ namespace TestMatrixClass
 
         [TestMethod]
         [ExpectedException(typeof(MyException))]
-        public void Summa3()
+        public void TestSumThird()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = -1; a[0, 1] = -1;
-            a[1, 0] = -1; a[1, 1] = -1;
-
-            MatrixClass b = new MatrixClass(2, 1);
-            b[0, 0] = 2;
-            b[1, 0] = 2;
+            MatrixClass a = new MatrixClass(new int[,] { { -1, -1 }, { -1, -1 } }, 2, 2);
+            
+            MatrixClass b = new MatrixClass(new int[,] { { 2, 2 } }, 2, 1);
 
             MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 1; expected[0, 1] = 1;
-            expected[1, 0] = 1; expected[1, 1] = 1;
 
             MatrixClass actual = new MatrixClass(2, 2);
 
             actual = a + b;
 
-            Assert.IsTrue(actual == expected);
         }
 
         [TestMethod]
-        public void Raznost1()
+        public void TestDiff()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 5; a[0, 1] = 4;
-            a[1, 0] = 3; a[1, 1] = 2;
+            MatrixClass a = new MatrixClass(new int[,] { { 5, 4 }, { 3, 2 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 5; b[0, 1] = 4;
-            b[1, 0] = 3; b[1, 1] = 2;
+            MatrixClass b = new MatrixClass(new int[,] { { 5, 4 }, { 3, 2 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 0; expected[0, 1] = 0;
-            expected[1, 0] = 0; expected[1, 1] = 0;
+            MatrixClass expected = new MatrixClass(new int[,] { { 0, 0 }, { 0, 0 } }, 2, 2);
 
             MatrixClass actual = new MatrixClass(2, 2);
 
@@ -178,20 +145,14 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void Raznost2()
+        public void TestDiffSecond()
         {
 
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = -1; a[0, 1] = -1;
-            a[1, 0] = -1; a[1, 1] = -1;
+            MatrixClass a = new MatrixClass(new int[,] { { -1, -1 }, { -1, -1 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 2; b[0, 1] = 2;
-            b[1, 0] = 2; b[1, 1] = 2;
+            MatrixClass b = new MatrixClass(new int[,] { { 2, 2 }, { 2, 2 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = -3; expected[0, 1] = -3;
-            expected[1, 0] = -3; expected[1, 1] = -3;
+            MatrixClass expected = new MatrixClass(new int[,] { { -3, -3 }, { -3, -3 } }, 2, 2);
 
             MatrixClass actual = new MatrixClass(2, 2);
 
@@ -202,20 +163,14 @@ namespace TestMatrixClass
 
         [TestMethod]
         [ExpectedException(typeof(MyException))]
-        public void Raznost3()
+        public void TestDiffThird()
         {
 
-            MatrixClass a = new MatrixClass(1, 1);
-            a[0, 0] = -1;
-            a[1, 0] = -1;
+            MatrixClass a = new MatrixClass(new int[,] { { -1, -1 } }, 1, 1);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 2; b[0, 1] = 2;
-            b[1, 0] = 2; b[1, 1] = 2;
+            MatrixClass b = new MatrixClass(new int[,] { { 2, 2 }, { 2, 2 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = -3; expected[0, 1] = -3;
-            expected[1, 0] = -3; expected[1, 1] = -3;
+            MatrixClass expected = new MatrixClass(new int[,] { { -3, -3 }, { -3, -3 } }, 2, 2);
 
             MatrixClass actual = new MatrixClass(2, 2);
 
@@ -225,50 +180,38 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void TestTrans1()
+        public void TestTranspese()
         {
-            MatrixClass a = new MatrixClass(new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }, 3, 3);
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2, 2 }, { 3, 4, 4 }, { 3, 4, 3 } }, 3, 3);
+           
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 3, 3 }, { 2, 4, 4 }, { 2, 4, 3 } }, 3, 3);
 
-            MatrixClass expected = new MatrixClass(new int[,] { { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 } }, 3, 3);
-
-            var actual = a.Tranpose();
+            var actual = a.Transpose();
 
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [ExpectedException(typeof(MyException))]
-        public void TestTrans2()
+        public void TestTranspeseSecond()
         {
-            MatrixClass a = new MatrixClass(3, 2);
-            a[0, 0] = 1; a[0, 1] = 2;
-            a[1, 0] = 3; a[1, 1] = 4;
-            a[2, 0] = 3; a[2, 1] = 4;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 }, { 3, 4 } }, 3, 2);
 
-            MatrixClass expected = new MatrixClass(3, 2);
-            expected[0, 0] = 1; expected[0, 1] = 3;
-            expected[1, 0] = 2; expected[1, 1] = 4;
-            expected[2, 0] = 2; expected[2, 1] = 4;
+            MatrixClass expected = new MatrixClass(new int[,] { { 1, 3 }, { 2, 4 }, { 2, 4 } }, 3, 2);
 
-            var actual = a.Tranpose();
+            var actual = a.Transpose();
 
             Assert.AreNotEqual(expected, actual);
         }
 
         [TestMethod]
-        public void TestMultiply1()
+        public void TestMultiply()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 2;
-            a[1, 0] = 3; a[1, 1] = 4;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 1; b[0, 1] = 2;
-            b[1, 0] = 3; b[1, 1] = 4;
+            MatrixClass b = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 7; expected[0, 1] = 10;
-            expected[1, 0] = 15; expected[1, 1] = 22;
+            MatrixClass expected = new MatrixClass(new int[,] { { 7, 10 }, { 15, 22 } }, 2, 2);
 
             MatrixClass actual = a * b;
 
@@ -277,19 +220,13 @@ namespace TestMatrixClass
 
         [TestMethod]
         [ExpectedException(typeof(MyException))]
-        public void TestMultiply2()
+        public void TestMultiplySecond()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 2;
-            a[1, 0] = 3; a[1, 1] = 4;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 3);
-            b[0, 0] = 1; b[0, 1] = 2; b[0, 2] = 2;
-            b[1, 0] = 3; b[1, 1] = 4; b[1, 2] = 4;
+            MatrixClass b = new MatrixClass(new int[,] { { 1, 2, 2 }, { 3, 4, 4 } }, 2, 3);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 7; expected[0, 1] = 10;
-            expected[1, 0] = 15; expected[1, 1] = 22;
+            MatrixClass expected = new MatrixClass(new int[,] { { 7, 10 }, { 15, 22 } }, 2, 2);
 
             MatrixClass actual = a * b;
 
@@ -297,19 +234,13 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void TestMultiply3()
+        public void TestMultiplyThird()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 0; a[0, 1] = 1;
-            a[1, 0] = 1; a[1, 1] = 0;
+            MatrixClass a = new MatrixClass(new int[,] { { 0, 1 }, { 1, 0 } }, 2, 2);
 
-            MatrixClass b = new MatrixClass(2, 2);
-            b[0, 0] = 0; b[0, 1] = 0;
-            b[1, 0] = 0; b[1, 1] = 0;
+            MatrixClass b = new MatrixClass(new int[,] { { 0, 0 }, { 0, 0 } }, 2, 2);
 
-            MatrixClass expected = new MatrixClass(2, 2);
-            expected[0, 0] = 0; expected[0, 1] = 0;
-            expected[1, 0] = 0; expected[1, 1] = 0;
+            MatrixClass expected = new MatrixClass(new int[,] { { 0, 0 }, { 0, 0 } }, 2, 2);
 
             MatrixClass actual = a * b;
 
@@ -317,11 +248,9 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void TestMin1()
+        public void TestMin()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 2;
-            a[1, 0] = 3; a[1, 1] = 4;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2}, { 3,4 } }, 2, 2);
 
             var expected = 1;
             var actual = a.Min();
@@ -330,24 +259,20 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void TestMin2()
+        public void TestMinSecond()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = -99; a[0, 1] = 99;
-            a[1, 0] = 256; a[1, 1] = -100;
+            MatrixClass a = new MatrixClass(new int[,] { { -99, 99 }, { -101, 111 } }, 2, 2);
 
-            var expected = -100;
+            var expected = -101;
             var actual = a.Min();
 
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void TestToString1()
+        public void TestToString()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 2;
-            a[1, 0] = 3; a[1, 1] = 4;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2 }, { 3, 4 } }, 2, 2);
 
             var expected = "{{1,2},{3,4}}";
             var actual = a.ToString();
@@ -356,14 +281,9 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        [ExpectedException(typeof(MyException))]
-        public void TestToString2()
+        public void TestToStringSecond()
         {
-            MatrixClass a = new MatrixClass(2, 2);
-            a[0, 0] = 1; a[0, 1] = 2; a[0, 2] = 2;
-            a[1, 0] = 3; a[1, 1] = 4; a[1, 2] = 4;
-            a[2, 0] = 1; a[2, 1] = 2; a[2, 2] = 5;
-            a[3, 0] = 3; a[3, 1] = 4; a[3, 2] = 6;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2, 2 }, { 3, 4, 4 }, { 1, 2, 5 }, { 3, 4, 6 } }, 4,3 );
 
             var expected = "{{1,2,2},{3,4,4},{1,2,5},{3,4,6}}";
             var actual = a.ToString();
@@ -372,30 +292,14 @@ namespace TestMatrixClass
         }
 
         [TestMethod]
-        public void TestToString3()
+        public void TestToStringThird()
         {
-            MatrixClass a = new MatrixClass(4, 3);
-            a[0, 0] = 1; a[0, 1] = 2; a[0, 2] = 2;
-            a[1, 0] = 3; a[1, 1] = 4; a[1, 2] = 4;
-            a[2, 0] = 1; a[2, 1] = 2; a[2, 2] = 5;
-            a[3, 0] = 3; a[3, 1] = 4; a[3, 2] = 6;
+            MatrixClass a = new MatrixClass(new int[,] { { 1, 2, 3 }, { 1, 2, 3 }, { 1, 2, 3 }, { 1, 2, 3 } }, 4, 3);
 
             var expected = "{{1,2,2},{3,4,4},{1,2,5},{3,4,6}}";
             var actual = a.ToString();
 
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(MyException))]
-        public void TestToString4()
-        {
-            MatrixClass a = new MatrixClass(0, 0);
-
-            var expected = "{{1,2,2},{3,4,4},{1,2,5},{3,4,6}}";
-            var actual = a.ToString();
-
-            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(expected, actual);
         }
     }
 }

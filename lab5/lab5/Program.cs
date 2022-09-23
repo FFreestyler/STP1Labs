@@ -1,19 +1,17 @@
-﻿// See https://aka.ms/new-console-template for more information
-using lab5;
+﻿using lab5;
+
+Console.WriteLine("Hello, World!");
 
 try
 {
-    SimpleFractionClass f = new SimpleFractionClass(4, 16);
-    SimpleFractionClass f2 = new SimpleFractionClass(2, 16);
-    SimpleFractionClass outn;
+    SimpleFractionClass a = new SimpleFractionClass("1/5");
 
-    outn = f - f2;
+    SimpleFractionClass.Minus(a);
 
-    outn.Show();
+    a.Show();
 
-    Console.WriteLine(outn.ToString());
 }
 catch (Exception ex)
 {
-    Console.WriteLine(ex.ToString());
+    Console.WriteLine(ex.Message);
 }

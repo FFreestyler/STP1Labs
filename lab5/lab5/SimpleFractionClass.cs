@@ -10,12 +10,12 @@ namespace lab5
     {
         private int _nominator = 0;
         private int _denominator = 0;
-        
+
         private void reduce()
         {
             var GCD = gcd(_nominator, _denominator);
 
-            if(GCD != 1)
+            if (GCD != 1)
             {
                 _nominator /= GCD;
                 _denominator /= GCD;
@@ -51,7 +51,7 @@ namespace lab5
         {
             int delimeterPosition = fractionString.IndexOf('/');
 
-            if(delimeterPosition < 0)
+            if (delimeterPosition < 0)
             {
                 throw new Exception($"Invalid string"); ;
             }
@@ -89,12 +89,12 @@ namespace lab5
             var firstNumber = a._nominator * unionDenominator / a._denominator;
             var secondNumber = b._nominator * unionDenominator / b._denominator;
 
-            return new (firstNumber - secondNumber, unionDenominator);
+            return new(firstNumber - secondNumber, unionDenominator);
         }
 
         public static SimpleFractionClass operator *(SimpleFractionClass a, SimpleFractionClass b)
         {
-            return new (a._nominator * b._nominator, a._denominator * b._denominator);
+            return new(a._nominator * b._nominator, a._denominator * b._denominator);
         }
 
         public static SimpleFractionClass operator /(SimpleFractionClass a, SimpleFractionClass b)
@@ -108,12 +108,12 @@ namespace lab5
                 denominator *= -1;
             }
 
-            return new (a._nominator * b._denominator, a._denominator * b._nominator);
+            return new(a._nominator * b._denominator, a._denominator * b._nominator);
         }
 
         public static SimpleFractionClass Pow(SimpleFractionClass a, int n = 2)
         {
-            return new ((int)Math.Pow(a._nominator, n), (int)Math.Pow(a._denominator, n));
+            return new((int)Math.Pow(a._nominator, n), (int)Math.Pow(a._denominator, n));
         }
 
         public static SimpleFractionClass Revers(SimpleFractionClass a)

@@ -11,7 +11,7 @@ namespace lab6
         private double _real;
         private double _imag;
 
-        public Complex(double a = 0, double b = 0) 
+        public Complex(double a = 0, double b = 0)
         {
             _real = a;
             _imag = b;
@@ -81,10 +81,10 @@ namespace lab6
 
         public double AngleRadians()
         {
-            if(_real > 0)
+            if (_real > 0)
             {
                 return Math.Atan(_imag / _real);
-            } 
+            }
             else if (_real < 0)
             {
                 return Math.Atan(_imag / _real) + Math.PI;
@@ -113,7 +113,7 @@ namespace lab6
                 //roots[k] = new Complex(phi, 0) * new Complex(Math.Cos((AngleRadians() + coeff) / n), Math.Sin((AngleRadians() + coeff) / n));
                 roots.Add(new Complex(phi, 0) * new Complex(Math.Cos((AngleRadians() + coeff) / n), Math.Sin((AngleRadians() + coeff) / n)));
             }
-           
+
             return roots[i];
         }
 

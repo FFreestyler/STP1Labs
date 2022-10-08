@@ -25,11 +25,16 @@ namespace lab7
 
         public PNumber(string str_)
         {
-            var delimeterPos = str_.Split(" ");
+            var delimeterPos = str_.Split(",");
 
             double num_ = double.Parse(delimeterPos[0]);
             int base_ = int.Parse(delimeterPos[1]);
             int accuracy_ = int.Parse(delimeterPos[2]);
+
+            if (base_ < 2 || base_ > 16)
+            {
+                throw new Exception("Base must be in range [2..16]");
+            }
 
             num = num_;
             numBase = base_;
@@ -76,6 +81,16 @@ namespace lab7
             return new PNumber(lhs.num / rhs.num, lhs.numBase, lhs.accuracy);
         }
 
+        public static bool operator ==(PNumber lhs, PNumber rhs)
+        {
+            return lhs.num == rhs.num && lhs.numBase == rhs.numBase && lhs.accuracy == rhs.accuracy;
+        }
+
+        public static bool operator !=(PNumber lhs, PNumber rhs)
+        {
+            return lhs.num != rhs.num || lhs.numBase != rhs.numBase || lhs.accuracy != rhs.accuracy;
+        }
+
         public static PNumber Revers(PNumber lhs)
         {
             return new PNumber(1 / lhs.num, lhs.numBase, lhs.accuracy);
@@ -93,7 +108,7 @@ namespace lab7
 
         public static string GetString(PNumber lhs)
         {
-            return $"Number: {lhs.num}, Base: {lhs.numBase}, Accuracy: {lhs.accuracy}";
+            return $"{lhs.num}, {lhs.numBase}, {lhs.accuracy}";
         }
 
         public static double GetBase(PNumber lhs)

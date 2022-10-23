@@ -17,14 +17,22 @@ using System.Windows.Shapes;
 
 namespace lab3
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private const string GRAMMAR_REGEXP = @"\[[^]]*]|\{[^}]*}|[^,]+";
+
+        private string _rules_count = "1";
+        private string RulesCount 
+        {
+            get => _rules_count;
+            set
+            {
+                _rules_count = value;
+                PropertyChanged?.Invoke(this, PropertyChangedEventArgs(nameof(RulesCount)));
+            }
+        }
 
         private string[] _rules = new[] { "" };
         private string[] _alphabet = new[] { "" };
